@@ -7,7 +7,7 @@ __post__ = {
 }
 
 __generated_with = "0.23.8"
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", css_file="blog.css")
 
 
 @app.cell
