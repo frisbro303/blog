@@ -22,6 +22,7 @@ jobs:
           for f in posts/*.py; do
             name=$(basename "$f" .py)
             marimo export html-wasm "$f" -o "docs/posts/$name.html"
+            python inject.py "docs/posts/$name.html"
           done
       - uses: actions/upload-pages-artifact@v3
         with:
