@@ -11,7 +11,8 @@ NAV = """
     padding: 0 2rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 2rem;
     height: 56px;
     position: sticky;
     top: 0;
