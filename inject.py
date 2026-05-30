@@ -35,6 +35,7 @@ html = f"""<!DOCTYPE html>
   </style>
 </head>
 <body>
+<div class="page">
 {nav(home="../")}
 <div class="wrap">
 <iframe
@@ -44,6 +45,7 @@ html = f"""<!DOCTYPE html>
   allowfullscreen
   loading="lazy"
 ></iframe>
+</div>
 </div>
 </body>
 </html>"""
