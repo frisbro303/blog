@@ -1,5 +1,15 @@
-import os, importlib.util
+import ast, os
 from shared import head, nav
+
+def read_meta(path):
+    with open(path) as f:
+        tree = ast.parse(f.read())
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Assign):
+            for target in node.targets:
+                if isinstance(target, ast.Name) and target.id == "__post__":
+                    return ast.literal_eval(node.value)
+    return {}
 
 def discover_posts():
     posts = []
@@ -7,10 +17,7 @@ def discover_posts():
         if not f.endswith(".py"):
             continue
         slug = f[:-3]
-        spec = importlib.util.spec_from_file_location(slug, f"posts/{f}")
-        mod  = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(mod)
-        meta = getattr(mod, "__post__", {})
+        meta = read_meta(f"posts/{f}")
         posts.append({
             "slug":    slug,
             "title":   meta.get("title", slug.replace("-", " ").title()),
@@ -75,7 +82,7 @@ INDEX = f"""<!DOCTYPE html>
 ABOUT = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
-{head("About — Your Name", home="./", active="about")}
+{head("About — The Endless Quest", home="./", active="about")}
   <style>
     .content {{ max-width: 580px; margin: 5rem auto; padding: 0 1.5rem; }}
     .content h1 {{ font-size: 1.6rem; font-weight: 500; margin-bottom: 2rem; }}
