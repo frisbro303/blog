@@ -40,7 +40,7 @@ def post_items():
 INDEX = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
-{head("Your Name", home="./", active="posts")}
+{head("The Endless Quest", home="./", active="posts")}
   <style>
     .hero {{ max-width: 640px; margin: 5rem auto 4rem; padding: 0 1.5rem; }}
     .hero h2 {{ font-size: 1.05rem; font-weight: 400; font-style: italic; color: var(--muted); margin-bottom: 0.75rem; }}
