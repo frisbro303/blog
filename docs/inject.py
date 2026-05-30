@@ -1,36 +1,56 @@
 import sys
 
-HEADER = """
+NAV = """
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap">
 <style>
-  :root {
-    --bg: #fafaf8; --text: #1a1a1a; --muted: #666; --border: #e8e8e4;
-  }
   #blog-nav {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.25rem 2.5rem; border-bottom: 1px solid var(--border);
-    background: var(--bg); position: sticky; top: 0; z-index: 10000;
     font-family: 'EB Garamond', serif;
+    background: #fafaf8;
+    border-bottom: 1px solid #e5e5e2;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
   }
-  #blog-nav a.nav-name { font-size: 1.05rem; font-weight: 500; text-decoration: none; color: var(--text); }
-  #blog-nav .nav-links { display: flex; gap: 2rem; }
-  #blog-nav .nav-links a { font-size: 0.95rem; color: var(--muted); text-decoration: none; transition: color 0.15s; }
-  #blog-nav .nav-links a:hover { color: var(--text); }
+  #blog-nav a.name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    text-decoration: none;
+  }
+  #blog-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  #blog-nav ul a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: #777;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  #blog-nav ul a:hover { color: #1a1a1a; }
 </style>
-<div id="blog-nav">
-  <a class="nav-name" href="/">Your Name</a>
-  <div class="nav-links">
-    <a href="/">Posts</a>
-    <a href="/about.html">About</a>
-  </div>
-</div>
+<nav id="blog-nav">
+  <a class="name" href="/">Your Name</a>
+  <ul>
+    <li><a href="/">posts</a></li>
+    <li><a href="/about.html">about</a></li>
+  </ul>
+</nav>
 """
 
 path = sys.argv[1]
 with open(path) as f:
     html = f.read()
 
-html = html.replace("<body>", f"<body>{HEADER}", 1)
+html = html.replace("<body>", f"<body>{NAV}", 1)
 
 with open(path, "w") as f:
     f.write(html)
