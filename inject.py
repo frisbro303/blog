@@ -14,7 +14,7 @@ html = f"""<!DOCTYPE html>
     .wrap {{
       max-width: 640px;
       width: 100%;
-      margin: 3rem auto;
+      margin: 0 auto;
       padding: 0 1.5rem;
       flex: 1;
       display: flex;
