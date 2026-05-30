@@ -1,10 +1,23 @@
-import os
+import os, importlib.util
 from shared import head, nav
 
-# Add an entry here for each post: (slug, title, excerpt, date)
-POSTS = [
-    ("hello-world", "Hello World", "A first post to test the setup.", "2026-05-30"),
-]
+def discover_posts():
+    posts = []
+    for f in sorted(os.listdir("posts"), reverse=True):
+        if not f.endswith(".py"):
+            continue
+        slug = f[:-3]
+        spec = importlib.util.spec_from_file_location(slug, f"posts/{f}")
+        mod  = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        meta = getattr(mod, "__post__", {})
+        posts.append({
+            "slug":    slug,
+            "title":   meta.get("title", slug.replace("-", " ").title()),
+            "date":    meta.get("date", ""),
+            "excerpt": meta.get("excerpt", ""),
+        })
+    return posts
 
 def write(path, content):
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -13,12 +26,13 @@ def write(path, content):
 
 def post_items():
     rows = []
-    for slug, title, excerpt, date in POSTS:
+    for p in discover_posts():
+        excerpt = f'<span class="excerpt">{p["excerpt"]}</span>' if p["excerpt"] else ""
         rows.append(f"""      <li>
-        <a href="posts/{slug}.html">
-          <span class="title">{title}</span>
-          <span class="excerpt">{excerpt}</span>
-          <span class="date">{date}</span>
+        <a href="posts/{p['slug']}.html">
+          <span class="title">{p['title']}</span>
+          {excerpt}
+          <span class="date">{p['date']}</span>
         </a>
       </li>""")
     return "\n".join(rows)
