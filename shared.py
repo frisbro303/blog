@@ -7,7 +7,7 @@ NAV_CSS = """
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #fafaf8;
+    --bg: #ffffff;
     --text: #1a1a1a;
     --muted: #777;
     --border: #e5e5e2;
