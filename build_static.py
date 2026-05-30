@@ -92,10 +92,8 @@ ABOUT = f"""<!DOCTYPE html>
 <div class="page">
 {nav(home="./", active="about")}
 <div class="content">
-  <h1>About</h1>
   <p>I'm a researcher interested in <em>mathematics</em> and <em>computing</em>. This blog is where I write up ideas, experiments, and things I find worth sharing.</p>
   <p>Posts are written as interactive Marimo notebooks — you can run and modify the code directly in your browser.</p>
-  <p>I'm currently based in Copenhagen.</p>
   <div class="links">
     <a href="mailto:you@example.com">email</a>
     <a href="https://github.com/frisbro303" target="_blank">github</a>
