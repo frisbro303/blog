@@ -3,97 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog</title>
+  <title>Your Name</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400&display=swap">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: #fafaf8;
-      color: #1a1a1a;
-      font-family: 'EB Garamond', serif;
-      font-size: 1.15rem;
-      min-height: 100vh;
-      padding: 6rem 1.5rem;
-    }
-
-    .wrap { max-width: 580px; margin: 0 auto; }
-
-    header { margin-bottom: 4rem; }
-
-    header h1 {
-      font-size: 1.9rem;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      margin-bottom: 1rem;
-    }
-
-    header p {
-      color: #555;
-      line-height: 1.75;
-      max-width: 480px;
-    }
-
-    header p em { color: #1a1a1a; font-style: italic; }
-
-    .divider {
-      border: none;
-      border-top: 1px solid #ddd;
-      margin: 3rem 0;
-    }
-
-    .posts { list-style: none; }
-
-    .posts li { padding: 1.5rem 0; border-bottom: 1px solid #eee; }
-    .posts li:first-child { border-top: 1px solid #eee; }
-
-    .posts a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .posts a:hover .title { text-decoration: underline; text-underline-offset: 3px; }
-
-    .title {
-      font-size: 1.2rem;
-      font-weight: 500;
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-
-    .excerpt {
-      color: #555;
-      font-style: italic;
-      font-size: 1rem;
-      line-height: 1.6;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    .meta {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: #aaa;
-      letter-spacing: 0.02em;
-    }
-
-    footer {
-      margin-top: 5rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: #bbb;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1>Your Name</h1>
-      <p>
-        Notes on <em>mathematics</em> and <em>computing</em> — from numerical methods and probability
-        to algorithms and experiments. Written as interactive notebooks.
-      </p>
+  <nav>
+    <a class="nav-name" href="/">Your Name</a>
+    <div class="nav-links">
+      <a href="/">Posts</a>
+      <a href="/about.html">About</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page-header">
+      <h1>Writing</h1>
+      <p>Notes on <em>mathematics</em> and <em>computing</em> — numerical methods, probability, algorithms, and experiments. Written as interactive notebooks.</p>
     </header>
 
     <ul class="posts">
@@ -105,8 +32,10 @@
         </a>
       </li>
     </ul>
+  </main>
 
-    <footer>built with marimo</footer>
-  </div>
+  <footer>
+    <span>Built with <a href="https://marimo.io">Marimo</a></span>
+  </footer>
 </body>
 </html>
