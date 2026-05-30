@@ -8,12 +8,13 @@ NAV_CSS = """
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --bg: #ffffff;
+    --page-bg: #f5f5f5;
     --text: #1a1a1a;
     --muted: #777;
     --border: #e5e5e2;
   }
   body {
-    background: var(--bg);
+    background: var(--page-bg);
     color: var(--text);
     font-family: 'EB Garamond', serif;
   }
