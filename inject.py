@@ -1,8 +1,19 @@
-import sys, os
+import sys, os, ast
 from shared import head, nav
 
+def read_meta(path):
+    with open(path) as f:
+        tree = ast.parse(f.read())
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Assign):
+            for target in node.targets:
+                if isinstance(target, ast.Name) and target.id == "__post__":
+                    return ast.literal_eval(node.value)
+    return {}
+
 name  = sys.argv[1]
-title = name.replace("-", " ").title()
+meta  = read_meta(f"posts/{name}.py")
+title = meta.get("title", name.replace("-", " ").title())
 
 html = f"""<!DOCTYPE html>
 <html lang="en">
