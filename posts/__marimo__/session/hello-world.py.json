@@ -19,13 +19,26 @@
       "console": []
     },
     {
-      "id": "kkql",
+      "id": "MJUe",
       "code_hash": "727bcbd9054f474125f5c55483417aee",
       "outputs": [
         {
           "type": "data",
           "data": {
             "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"hello-world\">Hello World</h1></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "unqk",
+      "code_hash": "b5c994a2c56cb36913f7bca78efad83a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><marimo-tex class=\"arithmatex\">||[\n\\sum_{i=1} x_{i}\n||]</marimo-tex></span>"
           }
         }
       ],
