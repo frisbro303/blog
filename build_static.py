@@ -86,7 +86,7 @@ ABOUT = f"""<!DOCTYPE html>
 <head>
 {head("About — The Endless Quest", home="./", active="about")}
   <style>
-    .content {{ max-width: 580px; margin: 5rem auto; padding: 0 1.5rem; }}
+    .content {{ max-width: 640px; margin: 5rem auto; padding: 0 1.5rem; }}
     .content h1 {{ font-size: 1.6rem; font-weight: 500; margin-bottom: 2rem; }}
     .content p {{ line-height: 1.8; color: #333; margin-bottom: 1.25rem; }}
     .content p em {{ font-style: italic; color: var(--text); }}
