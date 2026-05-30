@@ -19,18 +19,19 @@ NAV_CSS = """
   }
   nav {
     border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    padding: 1.25rem 2rem 1rem;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    height: 56px;
+    gap: 0.75rem;
     background: var(--bg);
   }
   nav a.name {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     font-weight: 500;
     color: var(--text);
     text-decoration: none;
+    letter-spacing: -0.01em;
   }
   nav a.name:hover { text-decoration: underline; text-underline-offset: 3px; }
   nav ul {
@@ -54,7 +55,7 @@ def nav(home="./", active=None):
         cls = ' class="active"' if active == page else ""
         return f'<li><a href="{href}"{cls}>{label}</a></li>'
     return f"""<nav>
-  <a class="name" href="{home}">Your Name</a>
+  <a class="name" href="{home}">The Endless Quest</a>
   <ul>
     {link("posts", "posts", home)}
     {link("about", "about", home + "about.html")}
