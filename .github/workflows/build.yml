@@ -18,11 +18,11 @@ jobs:
           python-version: "3.12"
       - run: pip install marimo
       - run: |
-          mkdir -p docs/posts
+          mkdir -p docs/posts/_raw
           for f in posts/*.py; do
             name=$(basename "$f" .py)
-            marimo export html-wasm "$f" -o "docs/posts/$name.html"
-            python inject.py "docs/posts/$name.html"
+            marimo export html-wasm "$f" -o "docs/posts/_raw/$name.html"
+            python inject.py "$name" "docs/posts/$name.html"
           done
       - uses: actions/upload-pages-artifact@v3
         with:
