@@ -9,13 +9,23 @@ html = f"""<!DOCTYPE html>
 <head>
 {head(title, home="../")}
   <style>
-    body {{ display: flex; flex-direction: column; height: 100vh; }}
+    body {{ display: flex; flex-direction: column; min-height: 100vh; }}
     nav  {{ flex-shrink: 0; }}
-    iframe {{ flex: 1; width: 100%; border: none; }}
+    .wrap {{
+      max-width: 640px;
+      width: 100%;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }}
+    iframe {{ flex: 1; min-height: 80vh; width: 100%; border: none; }}
   </style>
 </head>
 <body>
 {nav(home="../")}
+<div class="wrap">
 <iframe
   src="_raw/{name}.html"
   sandbox="allow-scripts allow-same-origin allow-downloads allow-popups allow-forms"
@@ -23,6 +33,7 @@ html = f"""<!DOCTYPE html>
   allowfullscreen
   loading="lazy"
 ></iframe>
+</div>
 </body>
 </html>"""
 
