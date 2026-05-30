@@ -1,5 +1,11 @@
 import marimo
 
+__post__ = {
+    "title": "Hello World",
+    "date": "2026-05-30",
+    "excerpt": "A first post to test the setup.",
+}
+
 __generated_with = "0.23.8"
 app = marimo.App(width="medium")
 
