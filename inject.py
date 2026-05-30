@@ -21,16 +21,9 @@ html = f"""<!DOCTYPE html>
 {head(title, home="../")}
   <style>
     body {{ display: flex; flex-direction: column; min-height: 100vh; }}
+    .page {{ max-width: 800px; margin: 0 auto; background: #ffffff; display: flex; flex-direction: column; flex: 1; width: 100%; }}
     nav  {{ flex-shrink: 0; }}
-    .wrap {{
-      max-width: 640px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }}
+    .wrap {{ flex: 1; display: flex; flex-direction: column; }}
     iframe {{ flex: 1; min-height: 80vh; width: 100%; border: none; }}
   </style>
 </head>
