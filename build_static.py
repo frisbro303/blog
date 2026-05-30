@@ -49,10 +49,7 @@ INDEX = f"""<!DOCTYPE html>
 <head>
 {head("The Endless Quest", home="./", active="posts")}
   <style>
-    .hero {{ max-width: 640px; margin: 5rem auto 4rem; padding: 0 1.5rem; }}
-    .hero h2 {{ font-size: 1.05rem; font-weight: 400; font-style: italic; color: var(--muted); margin-bottom: 0.75rem; }}
-    .hero p {{ font-size: 1.25rem; line-height: 1.75; }}
-    .section {{ max-width: 640px; margin: 0 auto; padding: 0 1.5rem 6rem; }}
+    .section {{ max-width: 640px; margin: 0 auto; padding: 4rem 1.5rem 6rem; }}
     .section-label {{ font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem; }}
     .posts {{ list-style: none; }}
     .posts li {{ border-top: 1px solid var(--border); padding: 1.4rem 0; }}
@@ -82,7 +79,7 @@ ABOUT = f"""<!DOCTYPE html>
 <head>
 {head("About — The Endless Quest", home="./", active="about")}
   <style>
-    .content {{ max-width: 640px; margin: 5rem auto; padding: 0 1.5rem; }}
+    .content {{ max-width: 640px; margin: 0 auto; padding: 4rem 1.5rem 6rem; }}
     .content h1 {{ font-size: 1.6rem; font-weight: 500; margin-bottom: 2rem; }}
     .content p {{ line-height: 1.8; color: #333; margin-bottom: 1.25rem; }}
     .content p em {{ font-style: italic; color: var(--text); }}
