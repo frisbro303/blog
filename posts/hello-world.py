@@ -1,4 +1,11 @@
+__post__ = {
+    "title": "Hello World",
+    "date": "2026-05-30",
+    "excerpt": "A first post to test the setup.",
+}
+
 import marimo
+
 
 __generated_with = "0.23.8"
 app = marimo.App(css_file="blog.css")
