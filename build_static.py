@@ -67,10 +67,6 @@ INDEX = f"""<!DOCTYPE html>
 <body>
 <div class="page">
 {nav(home="./", active="posts")}
-<div class="hero">
-  <h2>writing</h2>
-  <p>Notes on mathematics and computing — numerical methods, probability, algorithms, and experiments.</p>
-</div>
 <div class="section">
   <p class="section-label">All posts</p>
   <ul class="posts">
