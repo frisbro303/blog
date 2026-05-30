@@ -44,6 +44,7 @@ NAV = """
     <li><a href="../about.html">about</a></li>
   </ul>
 </nav>
+<div style="height: 2.5rem !important;"></div>
 """
 
 path = sys.argv[1]
