@@ -17,6 +17,13 @@ NAV_CSS = """
     background: var(--page-bg);
     color: var(--text);
     font-family: 'EB Garamond', serif;
+    min-height: 100vh;
+  }
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--bg);
+    min-height: 100vh;
   }
   nav {
     border-bottom: 1px solid var(--border);
