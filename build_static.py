@@ -20,19 +20,20 @@ def git_date(filename):
 
 def discover_posts():
     posts = []
-    for f in sorted(os.listdir("posts"), reverse=True):
+    for f in os.listdir("posts"):
         if not f.endswith(".py"):
             continue
         slug = f[:-3]
         title   = read_var(f"posts/{f}", "title") or slug.replace("-", " ").title()
         excerpt = read_var(f"posts/{f}", "excerpt") or ""
+        date    = git_date(f)
         posts.append({
             "slug":    slug,
             "title":   title,
-            "date":    git_date(f),
+            "date":    date,
             "excerpt": excerpt,
         })
-    return posts
+    return sorted(posts, key=lambda p: p["date"], reverse=True)
 
 def write(path, content):
     os.makedirs(os.path.dirname(path), exist_ok=True)
