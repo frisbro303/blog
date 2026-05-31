@@ -17,6 +17,19 @@
         }
       ],
       "console": []
+    },
+    {
+      "id": "mNvY",
+      "code_hash": "682025fae4a0641ae2c062ec55c8c441",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"diffusion-maps\">Diffusion Maps</h1></span>"
+          }
+        }
+      ],
+      "console": []
     }
   ]
 }
