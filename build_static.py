@@ -1,16 +1,5 @@
-import ast, os, subprocess
+import os, subprocess
 from shared import head, nav
-
-def read_meta(path):
-    with open(path) as f:
-        tree = ast.parse(f.read())
-    for node in ast.walk(tree):
-        if isinstance(node, ast.Assign):
-            for target in node.targets:
-                if isinstance(target, ast.Name) and target.id == "__post__":
-                    return ast.literal_eval(node.value)
-    return {}
-
 def git_date(filename):
     r = subprocess.run(
         ["git", "log", "--follow", "--format=%as", "-1", f"posts/{filename}"],
@@ -31,10 +20,10 @@ def discover_posts():
         if not f.endswith(".py"):
             continue
         slug = f[:-3]
-        meta = read_meta(f"posts/{f}")
+        title = slug.replace("-", " ").title()
         posts.append({
             "slug":    slug,
-            "title":   meta.get("title", slug.replace("-", " ").title()),
+            "title":   title,
             "date":    git_date(f),
             "excerpt": git_excerpt(f),
         })
