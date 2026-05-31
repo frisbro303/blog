@@ -1,19 +1,8 @@
-import sys, os, ast
+import sys, os
 from shared import head, nav
 
-def read_meta(path):
-    with open(path) as f:
-        tree = ast.parse(f.read())
-    for node in ast.walk(tree):
-        if isinstance(node, ast.Assign):
-            for target in node.targets:
-                if isinstance(target, ast.Name) and target.id == "__post__":
-                    return ast.literal_eval(node.value)
-    return {}
-
 name  = sys.argv[1]
-meta  = read_meta(f"posts/{name}.py")
-title = meta.get("title", name.replace("-", " ").title())
+title = name.replace("-", " ").title()
 
 html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -23,7 +12,7 @@ html = f"""<!DOCTYPE html>
     body {{ display: flex; flex-direction: column; min-height: 100vh; }}
     .page {{ max-width: 800px; margin: 0 auto; background: #ffffff; display: flex; flex-direction: column; flex: 1; width: 100%; }}
     nav  {{ flex-shrink: 0; }}
-    .wrap {{ flex: 1; display: flex; flex-direction: column; }}
+    .wrap {{ flex: 1; display: flex; flex-direction: column; padding-top: 2rem; }}
     iframe {{ flex: 1; min-height: 80vh; width: 100%; border: none; }}
   </style>
 </head>
