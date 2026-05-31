@@ -1,15 +1,19 @@
-import os, subprocess
+import ast, os, subprocess
 from shared import head, nav
+
+def read_var(path, var):
+    with open(path) as f:
+        tree = ast.parse(f.read())
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Assign):
+            for target in node.targets:
+                if isinstance(target, ast.Name) and target.id == var:
+                    return ast.literal_eval(node.value)
+    return None
+
 def git_date(filename):
     r = subprocess.run(
         ["git", "log", "--follow", "--format=%as", "-1", f"posts/{filename}"],
-        capture_output=True, text=True
-    )
-    return r.stdout.strip()
-
-def git_excerpt(filename):
-    r = subprocess.run(
-        ["git", "log", "--follow", "--format=%s", "-1", f"posts/{filename}"],
         capture_output=True, text=True
     )
     return r.stdout.strip()
@@ -20,12 +24,13 @@ def discover_posts():
         if not f.endswith(".py"):
             continue
         slug = f[:-3]
-        title = slug.replace("-", " ").title()
+        title   = read_var(f"posts/{f}", "title") or slug.replace("-", " ").title()
+        excerpt = read_var(f"posts/{f}", "excerpt") or ""
         posts.append({
             "slug":    slug,
             "title":   title,
             "date":    git_date(f),
-            "excerpt": git_excerpt(f),
+            "excerpt": excerpt,
         })
     return posts
 
