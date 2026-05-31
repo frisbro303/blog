@@ -1,4 +1,4 @@
-import ast, os
+import ast, os, subprocess
 from shared import head, nav
 
 def read_meta(path):
@@ -11,6 +11,20 @@ def read_meta(path):
                     return ast.literal_eval(node.value)
     return {}
 
+def git_date(filename):
+    r = subprocess.run(
+        ["git", "log", "--follow", "--format=%as", "-1", f"posts/{filename}"],
+        capture_output=True, text=True
+    )
+    return r.stdout.strip()
+
+def git_excerpt(filename):
+    r = subprocess.run(
+        ["git", "log", "--follow", "--format=%s", "-1", f"posts/{filename}"],
+        capture_output=True, text=True
+    )
+    return r.stdout.strip()
+
 def discover_posts():
     posts = []
     for f in sorted(os.listdir("posts"), reverse=True):
@@ -21,8 +35,8 @@ def discover_posts():
         posts.append({
             "slug":    slug,
             "title":   meta.get("title", slug.replace("-", " ").title()),
-            "date":    meta.get("date", ""),
-            "excerpt": meta.get("excerpt", ""),
+            "date":    git_date(f),
+            "excerpt": git_excerpt(f),
         })
     return posts
 
@@ -80,7 +94,6 @@ ABOUT = f"""<!DOCTYPE html>
 {head("About — The Endless Quest", home="./", active="about")}
   <style>
     .content {{ max-width: 640px; margin: 0 auto; padding: 2rem 1.5rem 6rem; }}
-    .content h1 {{ font-size: 1.6rem; font-weight: 500; margin-bottom: 2rem; }}
     .content p {{ line-height: 1.8; color: #333; margin-bottom: 1.25rem; }}
     .content p em {{ font-style: italic; color: var(--text); }}
     .links {{ margin-top: 2.5rem; display: flex; gap: 1.5rem; }}
