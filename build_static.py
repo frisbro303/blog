@@ -93,9 +93,8 @@ ABOUT = f"""<!DOCTYPE html>
 {nav(home="./", active="about")}
 <div class="content">
   <p>I'm a researcher interested in <em>mathematics</em> and <em>computing</em>. This blog is where I write up ideas, experiments, and things I find worth sharing.</p>
-  <p>Posts are written as interactive Marimo notebooks — you can run and modify the code directly in your browser.</p>
   <div class="links">
-    <a href="mailto:you@example.com">email</a>
+    <a href="mailto:felix@granum.quest">email</a>
     <a href="https://github.com/frisbro303" target="_blank">github</a>
   </div>
 </div>
